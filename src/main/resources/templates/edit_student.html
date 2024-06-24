@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Management System</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card"
+        >
+          <h1 class="text-center">Update Student</h1>
+          <div class="card-body">
+            <!-- in the "th:object" field the value inside ${} has to be the same as the object in the controller class handler method's object -->
+            <!-- th:action ="@{/students/{id}(id =${student.id})}" this is the syntax to access the student by ID from the data base  -->
+            <form
+              th:action="@{/students/{id}(id =${student.id})}"
+              th:object="${student}"
+              method="post"
+            >
+              <div class="form-group">
+                <label>First Name</label>
+                <!-- in th:field the value in side *{} same as the entity class value that we want to retrive -->
+                <input
+                  type="text"
+                  name="firstName"
+                  th:field="*{fName}"
+                  placeholder="Update the first name"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  th:field="*{lName}"
+                  placeholder="Update Last Name of the student"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input
+                  type="text"
+                  name="email"
+                  th:field="*{email}"
+                  placeholder="Update email of the student"
+                  class="form-control"
+                />
+              </div>
+              <div class="box-footer">
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
